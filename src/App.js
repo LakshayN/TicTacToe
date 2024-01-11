@@ -12,7 +12,7 @@ function App() {
   return (
     <div>
       {playerSymbol ? (
-        <TicTacToe my={playerSymbol} />
+        <TicTacToe my={playerSymbol} setPlayerSymbol={setPlayerSymbol} />
       ) : (
         <SymbolSelectionPage onSelectSymbol={handleSymbolSelect} />
       )}

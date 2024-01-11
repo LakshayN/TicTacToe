@@ -4,7 +4,7 @@ import Square from "./Square";
 import { calculateWinner, getWinnerIndex } from "../utils/calculateWinner";
 
 const style = {
-  border: "4px solid darkblue",
+  border: "4px solid black",
   borderRadius: "10px",
   width: "250px",
   height: "250px",
@@ -12,8 +12,24 @@ const style = {
   display: "grid",
   gridTemplate: "repeat(3, 1fr) / repeat(3, 1fr)",
 };
+const buttonStyle = {
+  padding: "10px 20px",
+  fontSize: "16px",
+  fontWeight: "bold",
+  borderRadius: "5px",
+  backgroundColor: "#3498db", // You can customize the background color
+  color: "#fff", // You can customize the text color
+  cursor: "pointer",
+  border: "none",
+  outline: "none",
+  transition: "background-color 0.3s ease-in-out",
+  margin: "10px",
+  width: "300px",
+  margin: "auto",
+  marginTop: "20px",
+};
 
-const TicTacToe = ({ my }) => {
+const TicTacToe = ({ my, setPlayerSymbol }) => {
   const [gameState, setGameState] = useState({
     activePlayer: "M",
     board: [null, null, null, null, null, null, null, null, null],
@@ -90,19 +106,30 @@ const TicTacToe = ({ my }) => {
     [winnerFound]
   );
 
+  const playAgain = () => {
+    setPlayerSymbol(null);
+  };
+
   return (
-    <div style={style}>
-      {gameState?.board?.map((square, index) => {
-        return (
-          <Square
-            key={index}
-            value={square}
-            index={index}
-            onClick={handleSquareClick}
-            winner={idxs?.includes(index)}
-          />
-        );
-      })}
+    <div className='mainclass'>
+      <div style={style}>
+        {gameState?.board?.map((square, index) => {
+          return (
+            <Square
+              key={index}
+              value={square}
+              index={index}
+              onClick={handleSquareClick}
+              winner={idxs?.includes(index)}
+            />
+          );
+        })}
+      </div>
+      {winnerFound && (
+        <button style={buttonStyle} onClick={playAgain}>
+          play again
+        </button>
+      )}
     </div>
   );
 };

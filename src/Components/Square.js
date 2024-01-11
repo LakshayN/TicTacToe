@@ -4,7 +4,7 @@ import "./TicTacToe.css";
 const Square = React.memo(({ value, onClick, index, winner }) => {
   console.log("winner component ", winner);
   const style = {
-    border: "2px solid darkblue",
+    border: "2px solid black",
     fontSize: "30px",
     fontWeight: "800",
     cursor: "pointer",

@@ -7,3 +7,8 @@
 .bg-red {
   background-color: red;
 }
+
+.mainclass {
+  display: flex;
+  flex-direction: column;
+}
